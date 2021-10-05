@@ -4,23 +4,25 @@ const signUp = e => {
         email = document.getElementById('email').value,
         pwd = document.getElementById('pwd').value;
 
-    let formData = JSON.parse(localStorage.getItem('formData')) || [];
+    let users = JSON.parse(localStorage.getItem('users')) || [];
 
-    let exist = formData.length && 
-        JSON.parse(localStorage.getItem('formData')).some(data => 
+    let exist = users.length && 
+        users.some(data => 
             data.fname.toLowerCase() == fname.toLowerCase()
         );
 
     if(!exist){
-        formData.push({ fname, email, pwd });
-        localStorage.setItem('formData', JSON.stringify(formData));
+        users.push({ fname, email, pwd });
+        localStorage.setItem('users', JSON.stringify(users));
         document.querySelector('form').reset();
         document.getElementById('fname').focus();
         alert("Compte crée.\n\nS'il vous plait, Veuillez se connecter.");
+        location.href = "";
     }
     else
     {
         alert("Ooopppssss... !!!\nVotre nom existe déja!");
+        
     }
     e.preventDefault();
 }

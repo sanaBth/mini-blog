@@ -7,7 +7,7 @@ import { ArticleComponent } from './article/article.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-
+import { AddarticleComponent } from './addarticle/addarticle.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,10 +17,12 @@ import { NotfoundComponent } from './notfound/notfound.component';
     FooterComponent,
     RegisterComponent,
     NotfoundComponent,
+    AddarticleComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
