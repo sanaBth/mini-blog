@@ -1,22 +1,47 @@
 import { Inject, Injectable } from '@angular/core';
+import { Article } from '../model/article';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
-  anotherTodolist = [];
+ 
   constructor( ) { }
-  public storeOnLocalStorage(taskTitle: string): void {
-          
+  public posts : Article[] = []
+  public storeOnLocalStorage(post: Article): void 
+  {
     // get array of tasks from local storage
-   // const currentTodoList = this.storage.get() || [];
+    this.posts = JSON.parse(localStorage.getItem('Articles') || '[]');
     // push new task to array
- /*   currentTodoList.push({
-        title: taskTitle,
-        isChecked: false 
-    });
-    //insert updated array to local storage
-    this.storage.set(STORAGE_KEY, currentTodoList);
-    console.log(this.storage.get(STORAGE_KEY) || 'LocaL storage is empty'); */
-}
+    this.posts.push(post);
+    // insert updated array to local storage
+    localStorage.setItem('Articles',JSON.stringify(this.posts));
+    //console.log(localStorage.getItem('Posts') || 'LocaL storage is empty');
+  }
+  getPosts()
+  {
+    /* const posts = JSON.parse(localStorage.getItem('Posts')) || [];*/
+    return JSON.parse(localStorage.getItem('Articles') || '[]');
+
+  }
+  getonePost(i : number)
+  {
+    /* const posts = JSON.parse(localStorage.getItem('Posts')) || [];*/
+    this.posts =JSON.parse(localStorage.getItem('Articles') || '[]');
+    return this.posts[i]
+  }
+
+  public removeItem(i:number) 
+  {
+    this.posts =JSON.parse(localStorage.getItem('Articles') || '[]')
+    this.posts.splice(i,1)
+    localStorage.setItem('Articles',JSON.stringify(this.posts));
+  }
+
+  public updateItem(i:number,updatePost :Article) 
+  {
+    this.posts =JSON.parse(localStorage.getItem('Articles') || '[]')
+    this.posts.splice(i,1,updatePost);
+    localStorage.setItem('Articles',JSON.stringify(this.posts));
+  }
 }

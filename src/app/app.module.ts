@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AddarticleComponent } from './addarticle/addarticle.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,8 @@ import { AddarticleComponent } from './addarticle/addarticle.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

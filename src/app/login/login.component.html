@@ -8,20 +8,22 @@
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header"><h4 class="text-center font-weight-light my-4">Login</h4></div>
                             <div class="card-body">
-                                <form role="form" onsubmit="signIn(event);" autocomplete="off">
+                                <form [formGroup]="userForm" >
                                     <div class="form-floating mb-3">
                                         
-                                        <input class="form-control" name="email" id="email"  type="email" placeholder="name@example.com" />
+                                        <input class="form-control" name="email" id="email" formControlName="email" type="email" placeholder="name@example.com" />
                                         <label for="inputEmail">Email address</label>
+                                        <div class="text-info" *ngIf ="userForm.controls.email && userForm.controls.email.invalid && userForm.controls.email.touched">Ce champs est obligatoire</div>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" name="pwd" id="pwd" type="password" placeholder="Password" />
+                                        <input class="form-control" name="pwd" id="pwd" formControlName="password" type="password" placeholder="Password" />
                                         
                                         <label for="inputPassword">Password</label>
+                                        <div class="text-info" *ngIf ="userForm.controls.password && userForm.controls.password.invalid && userForm.controls.password.touched">Ce champs est obligatoire</div>
                                     </div>
                                   <div class="text-center">
                                    
-                                        <button type="submit" class="btn btn-success">Login</button>
+                                        <button type="submit" (click)="login()" class="btn btn-success" [disabled]="!userForm.valid">Login</button>
                                         
                                     </div>
                                 </form>
