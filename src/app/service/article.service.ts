@@ -16,17 +16,17 @@ export class ArticleService {
     this.posts.push(post);
     // insert updated array to local storage
     localStorage.setItem('Articles',JSON.stringify(this.posts));
-    //console.log(localStorage.getItem('Posts') || 'LocaL storage is empty');
+  
   }
   getPosts()
   {
-    /* const posts = JSON.parse(localStorage.getItem('Posts')) || [];*/
+   
     return JSON.parse(localStorage.getItem('Articles') || '[]');
 
   }
   getonePost(i : number)
   {
-    /* const posts = JSON.parse(localStorage.getItem('Posts')) || [];*/
+   
     this.posts =JSON.parse(localStorage.getItem('Articles') || '[]');
     return this.posts[i]
   }

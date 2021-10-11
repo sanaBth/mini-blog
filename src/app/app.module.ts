@@ -10,6 +10,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { AddarticleComponent } from './addarticle/addarticle.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FilterPipe } from './pipes/filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     NotfoundComponent,
     AddarticleComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

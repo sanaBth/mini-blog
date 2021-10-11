@@ -17,7 +17,7 @@ export class StorageService {
     this.users.push(user);
     // insert updated array to local storage
     localStorage.setItem('Users',JSON.stringify(this.users));
-    //console.log(localStorage.getItem('Posts') || 'LocaL storage is empty');
+    
   }
   public login(user: User): void 
   {
@@ -28,7 +28,7 @@ export class StorageService {
     
     
     localStorage.setItem('Users',JSON.stringify(this.users));
-    //console.log(localStorage.getItem('Posts') || 'LocaL storage is empty');
+    
   }
   public logout()
   {

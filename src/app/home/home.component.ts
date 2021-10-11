@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private _localStorageService : ArticleService) { }
   public articles : Article[] =[];
+  filtredInput:String ='';
   i:number;
   ngOnInit(): void {
     this.refresh();
