@@ -7,31 +7,34 @@
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header"><h3 class="text-center font-weight-light my-4">Créer un compte</h3></div>
                         <div class="card-body">
-                            <form role="form" onsubmit="signUp(event);" autocomplete="off">
+                            <form [formGroup]="userForm" >
                                 
                                         <div class="form-floating mb-3">
                                             
-                                            <input class="form-control"  name="fname" id="fname"type="text" placeholder="Entrer votre nom et prénom" />
+                                            <input class="form-control"  name="fname" formControlName="fname" id="fname"type="text" placeholder="Entrer votre nom et prénom" />
                                             <label for="inputFirstName">Nom et prénom</label>
+                                            <div class="text-info" *ngIf ="userForm.controls.fname && userForm.controls.fname.invalid && userForm.controls.fname.touched">Ce champs est obligatoire</div>
                                         </div>
                                    
                                 <div class="form-floating mb-3">
                                      
-                                    <input class="form-control"  name="email" id="email"  type="email" placeholder="name@example.com" />
+                                    <input class="form-control"  name="email" id="email" formControlName="email" type="email" placeholder="name@example.com" />
                                     <label for="inputEmail">Email address</label>
+                                    <div class="text-info" *ngIf ="userForm.controls.email && userForm.controls.email.invalid && userForm.controls.email.touched">Ce champs est obligatoire</div>
                                 </div>
                                
                                   
                                         <div class="form-floating mb-3">
                                            
-                                            <input class="form-control" name="pwd" id="pwd" type="password" placeholder="Entrer un mot de passe" />
+                                            <input class="form-control" name="pwd" id="pwd" formControlName="pwd" type="password" placeholder="Entrer un mot de passe" />
                                             <label for="inputPassword">Mot de passe</label>
+                                            <div class="text-info" *ngIf ="userForm.controls.pwd && userForm.controls.pwd.invalid && userForm.controls.pwd.touched">Ce champs est obligatoire</div>
                                         </div>
                                  
                                    
                               
                                 <div class="mt-4 mb-0">
-                                    <div class="d-grid"><button type="submit" class="btn btn-primary text-center" >Inscription</button> </div>
+                                    <div class="d-grid"><button type="submit" (click)="saveUser()" class="btn btn-primary text-center" [disabled]="!userForm.valid">Inscription</button> </div>
                                 </div>
                             </form>
                         </div>
