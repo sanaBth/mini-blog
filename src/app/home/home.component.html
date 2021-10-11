@@ -1,15 +1,19 @@
 <app-navbar></app-navbar>
-
+<div class="container px-4 px-lg-5">
+    <div class="row">
+        <div class="col-md-10 col-lg-8 col-xl-7 mt-3 mb-5">
+            <input type="text" class="form-control" [(ngModel)]="filtredInput">
+        </div>
+    </div>
+</div>
 <!-- Main Content-->
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
             <!-- Post preview-->
-            <div class="post-preview" *ngFor="let p of articles ; let i = index">
-                
+            <div class="post-preview" *ngFor="let p of articles | filter:filtredInput; let i = index">
                     <h2 class="post-title">{{p.titre}}</h2>
                     <h3 class="post-subtitle">{{p.contenu}}</h3>
-            
                     Posted by
                     <a href="#!">Start Bootstrap</a>
                     {{p.date| date }}
@@ -18,7 +22,6 @@
                         <div class="row float-left">
                         <div class="col-md-3"> 
                             <button type="button" class="btn btn-link" [routerLink]="['/addarticle',i]">Modifier</button>
-                           
                        </div> 
                         <div class="col-md-3">   
                        <button type="submit" class="btn btn-link" (click)="delete(i)" >Supprimer</button>
@@ -26,7 +29,6 @@
                 </div>
                    </div>
                     <hr class="my-4" />
-
             </div>
         </div>
     </div>
